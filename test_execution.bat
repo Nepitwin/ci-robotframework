@@ -1,0 +1,1 @@
+robot -x xunit.xml -d result --nostatusrc Automation.robot

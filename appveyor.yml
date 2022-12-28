@@ -1,19 +1,50 @@
 version: 1.0.{build}
-image: Visual Studio 2017
+image: Visual Studio 2022
+environment:
+  matrix:
+    - job_name: Python 3.8 x86
+      PYTHON: "C:\\Python38"
+      PYTHON_VERSION: 3.8
+      PYTHON_ARCH: 32
+
+    - job_name: Python 3.9 x86
+      PYTHON: "C:\\Python39"
+      PYTHON_VERSION: 3.9
+      PYTHON_ARCH: 32
+
+    - job_name: Python 3.10 x86
+      PYTHON: "C:\\Python310"
+      PYTHON_VERSION: 3.10
+      PYTHON_ARCH: 32
+
+    - job_name: Python 3.8 x64
+      PYTHON: "C:\\Python38-x64"
+      PYTHON_VERSION: 3.8
+      PYTHON_ARCH: 64
+
+    - job_name: Python 3.9 x64
+      PYTHON: "C:\\Python39-x64"
+      PYTHON_VERSION: 3.9
+      PYTHON_ARCH: 64
+
+    - job_name: Python 3.10 x64
+      PYTHON: "C:\\Python310-x64"
+      PYTHON_VERSION: 3.10
+      PYTHON_ARCH: 64
+init:
+  - ECHO %PYTHON% %PYTHON_VERSION% %PYTHON_ARCH%
 install:
 - cmd: >-
-    set PATH=C:\Python37;C:\Python37\\Scripts;%PATH%
+    set PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%
+    
+    python --version
 
     python -m pip install --upgrade pip
-
-    pip install wheel
-
-    pip install robotframework
-
-    pip install robotframework-whitelibrary
+    
+    .\keen.bat dependency
 build: off
 test_script:
-- ps: robot -x xunit-result.xml -d result --nostatusrc Automation.robot
+- cmd: .\keen.bat test
 artifacts:
 - path: result/
   name: results

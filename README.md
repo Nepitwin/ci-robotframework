@@ -1,8 +1,10 @@
 # CI-Robotframework
 
-[![Build status](https://ci.appveyor.com/api/projects/status/n7lbk8jged5a1xcv?svg=true)](https://ci.appveyor.com/project/Nepitwin/ci-robotframework)
-
-[<img src="https://img.shields.io/appveyor/tests/Nepitwin/ci-robotframework">](https://ci.appveyor.com/project/Nepitwin/ci-robotframework/build/tests)
+| System    | Badge |
+| -------- | ------- |
+| Appveyor Build  | [![Build status](https://img.shields.io/appveyor/build/Nepitwin/ci-robotframework)](https://ci.appveyor.com/project/Nepitwin/ci-robotframework)    |
+| Appveyor Badge |[<img src="https://img.shields.io/appveyor/tests/Nepitwin/ci-robotframework">](https://ci.appveyor.com/project/Nepitwin/ci-robotframework/build/tests)     |
+| Testspace Badge    | [<img src="https://img.shields.io/testspace/tests/nepitwin/Nepitwin%3Aci-robotframework/main">](https://nepitwin.testspace.com/spaces/267312)    |
 
 Robotframework example for build system usage by ui test automation by appveyor.
 

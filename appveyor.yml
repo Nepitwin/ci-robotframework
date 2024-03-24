@@ -34,20 +34,21 @@ environment:
 init:
   - ECHO %PYTHON% %PYTHON_VERSION% %PYTHON_ARCH%
 install:
+- appveyor DownloadFile https://testspace-client.s3.amazonaws.com/testspace-windows.zip
+- 7z x -y testspace-windows.zip
+- testspace config url nepitwin.testspace.com
 - cmd: >-
-    set PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%
-    
-    python --version
-
-    python -m pip install --upgrade pip
-    
-    .\keen.bat dependency
+      set PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%
+       
+      .\keen.bat dependency
 build: off
 test_script:
 - cmd: .\keen.bat test
 artifacts:
 - path: result/
   name: results
+after_test:
+  - testspace result\xunit-result.xml
 on_finish:
 - ps: >-
     $wc = New-Object 'System.Net.WebClient'
